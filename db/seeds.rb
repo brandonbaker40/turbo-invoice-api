@@ -1,10 +1,50 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# frozen_string_literal: true
 
+User.create(
+  email: 'user@example.com',
+  nickname: 'UOne',
+  name: 'User One',
+  password: 'monkey67'
+)
 
-User.create(email: 'user@example.com', nickname: 'UOne', name: 'User One', password: "monkey67")
+Discipline.create(
+  name: 'Physical Therapy',
+  field: 'Physical Therapy',
+  job_title: 'Physical Therapist',
+  abbreviation: 'PT'
+)
+
+Discipline.create(
+  name: 'Physical Therapy',
+  field: 'Physical Therapy Assistance',
+  job_title: 'Physical Therapist Assistant',
+  abbreviation: 'PTA'
+)
+
+Discipline.create(
+  name: 'Occupational Therapy',
+  field: 'Occupational Therapy',
+  job_title: 'Occupational Therapist',
+  abbreviation: 'OT'
+)
+
+Discipline.create(
+  name: 'Occupational Therapy',
+  field: 'Certified Occupational Therapy Assistance',
+  job_title: 'Certified Occupational Therapy Assistant',
+  abbreviation: 'COTA'
+)
+
+Discipline.create(
+  name: 'Speech-Language Pathology',
+  field: 'Speech-Language Pathology',
+  job_title: 'Speech-Langugage Pathologist',
+  abbreviation: 'SLP'
+)
+
+Discipline.create(
+  name: 'Skilled Nursing',
+  field: 'Skilled Nursing',
+  job_title: 'Registered Nurse',
+  abbreviation: 'RN'
+)

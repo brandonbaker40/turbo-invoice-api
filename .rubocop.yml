@@ -1,0 +1,23 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'test/*'
+    - 'spec/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - '**/*.rake'
+    - 'config/**/*.rb'
+
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'bin/setup'
+    - 'bin/update'
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'spec/**/*'
