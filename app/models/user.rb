@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# test to be removed later
-
 # User
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
