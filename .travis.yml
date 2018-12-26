@@ -1,0 +1,8 @@
+language: ruby
+rvm:
+ - 2.5.3
+services:
+  - postgresql
+before_script:
+  - psql -c "CREATE DATABASE turbo_invoice_backend_test ;" -U postgres
+  - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
