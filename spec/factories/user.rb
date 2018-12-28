@@ -2,11 +2,11 @@
 
 FactoryBot.define do
   factory :user do
-    name { 'Timothy' }
-    nickname { 'Timmy' }
+    name { Faker::Name.first_name }
+    nickname { Faker::Name.last_name }
     image { nil }
-    email { 'tim@example.com' }
-    password { 'password1' }
+    email { Faker::Internet.email }
+    password { Faker::Internet.password(8) }
     tokens { {} }
   end
 end
