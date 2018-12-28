@@ -8,5 +8,5 @@ class VisitType < ApplicationRecord
 
   validates_presence_of :code, presence: true, allow_nil: true
 
-  # has_many :visits
+  has_many :visits
 end
