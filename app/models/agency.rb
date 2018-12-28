@@ -23,7 +23,7 @@ class Agency < ApplicationRecord
   validates_format_of :state, with: /\A(?-i:A[LKZR]|C[AOT]|D[EC]|F[L]|G[A]|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|PA|RI|S[CD]|T[NX]|UT|V[AT]|W[AIVY])\z/
   # rubocop:enable Metrics/LineLength
 
-  # has_many :patients
+  has_many :patients
   # has_many :visits, through: :patients
   # has_one :contract
 end
