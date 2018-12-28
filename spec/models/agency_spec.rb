@@ -16,7 +16,6 @@ RSpec.describe Agency, type: :model do
 
   describe 'ActiveRecord associations' do
     it { expect(a).to have_many(:patients) }
-    it { expect(a).to has_one(:contract) }
-    it { expect(a).to have_many(:visits).through(:patients) }
+    it { expect(a).to have_one(:contract) }
   end
 end

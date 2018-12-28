@@ -17,7 +17,6 @@ RSpec.describe Patient, type: :model do
 
   describe 'ActiveRecord associations' do
     it { expect(pt).to have_many(:visits) }
-    it { expect(pt).to have_many(:users).through(:visits) }
     it { expect(pt).to belong_to(:agency) }
   end
 end
