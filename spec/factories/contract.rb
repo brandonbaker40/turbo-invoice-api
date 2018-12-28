@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :contract do
-    agency { nil }
+    agency
     effective_date { '2017-12-28' }
     termination_date { '2018-12-28' }
   end
