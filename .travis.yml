@@ -1,12 +1,21 @@
 language: ruby
 rvm:
- - 2.5.3
+- 2.5.3
 services:
-  - postgresql
+- postgresql
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rake
 before_script:
-  - psql -c "CREATE DATABASE turbo_invoice_backend_test ;" -U postgres
-  - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
+- psql -c "CREATE DATABASE turbo_invoice_backend_test ;" -U postgres
+- psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: jAxAEseCAzoZTK+EgQwTLN9EH1ROIbgPrFrorfi7QzL8wh2WOczB7S8VwiM6EWhs7mhJqjTjEBwk1MgXZ+SZ2soKcGfd6TYb/0Vr23QFnuq0JeTOOjTqqX1alQgp0q4WUOyDxiJFC3aKOyi3CmrDvCcBg5AFggPoWSuciU057QfiHBX/L2498zRaLa3mG/U2+Qx2IIkr5fTFxkaIzBRERsGP4+V/tRgM6Tcs499/1XhHV5qnwg61j4hPg/84HTv2VKTZxKrJDcFUpkv68heBFeRWjthMb3tZWRnop1LcJgPc/pbKP0icUtBIhEkJjq8n6bUMRI7GTl1qncSKWq3FesZ3/B1hg1a4F4Eda8SSSk4R72fV3p1zdhBbQ3L3liMfCsYqauJ8NyByZZZUhgnyj1WdOSkEwmHrLtiY4t2O7TtsfCr6e1MQlI8AzoaSEPTL5CuzBR9b8eHDRAX7v6TcVJTDnVcexRA0R1aumU2bBIG9UMOlVvUGP5lK1CWaZMdKfMwCJX7J9cCRx4BUDtDrKfbrfsLnUezevToQkrfu6A6oXp7AofVBI9QH7XSLLSnECr05yC/v4Dl8XwuAy8iaYZPINDkA4LQ5J1uab90//eWKa5KfZEWSPBoLtbhDrZ1PiQxe2wQxNTkwZZwHFLCijXGjoCWk28VVZ/hcaeGcBZc=
+  app: turbo-invoice-backend
+  run:
+    - "rake db:schema:load"
+    - "rake db:migrate"
+    - "rake db:seed"
