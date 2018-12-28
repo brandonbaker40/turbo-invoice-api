@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_185220) do
+ActiveRecord::Schema.define(version: 2018_12_28_191743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2018_12_28_185220) do
     t.datetime "updated_at", null: false
     t.index ["agency_id"], name: "index_clearances_on_agency_id"
     t.index ["user_id"], name: "index_clearances_on_user_id"
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.bigint "agency_id"
+    t.date "effective_date"
+    t.date "termination_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_contracts_on_agency_id"
   end
 
   create_table "disciplines", force: :cascade do |t|
@@ -124,6 +133,7 @@ ActiveRecord::Schema.define(version: 2018_12_28_185220) do
 
   add_foreign_key "clearances", "agencies"
   add_foreign_key "clearances", "users"
+  add_foreign_key "contracts", "agencies"
   add_foreign_key "patients", "agencies"
   add_foreign_key "rates", "agencies"
   add_foreign_key "rates", "users"
