@@ -8,5 +8,10 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password(8) }
     tokens { {} }
+    discipline
+    street_address { Faker::Address.street_address }
+    city { Faker::Address.community }
+    state { Faker::Address.state_abbr }
+    zip_code { rand.to_s[2..6] }
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_191743) do
+ActiveRecord::Schema.define(version: 2018_12_28_204430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,7 +102,13 @@ ActiveRecord::Schema.define(version: 2018_12_28_191743) do
     t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "discipline_id"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["discipline_id"], name: "index_users_on_discipline_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
@@ -138,6 +144,7 @@ ActiveRecord::Schema.define(version: 2018_12_28_191743) do
   add_foreign_key "rates", "agencies"
   add_foreign_key "rates", "users"
   add_foreign_key "rates", "visit_types"
+  add_foreign_key "users", "disciplines"
   add_foreign_key "visits", "agencies"
   add_foreign_key "visits", "patients"
   add_foreign_key "visits", "users"

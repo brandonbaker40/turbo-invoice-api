@@ -10,5 +10,5 @@ class Discipline < ApplicationRecord
     validates_uniqueness_of attr.to_sym
   end
 
-  # has_many :users
+  has_many :users
 end
