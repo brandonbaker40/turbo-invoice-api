@@ -10,4 +10,5 @@ class Patient < ApplicationRecord
 
   belongs_to :agency
   has_many :visits
+  has_many :users, through: :visits
 end

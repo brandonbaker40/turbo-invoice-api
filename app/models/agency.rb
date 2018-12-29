@@ -24,6 +24,14 @@ class Agency < ApplicationRecord
   # rubocop:enable Metrics/LineLength
 
   has_many :patients
+  has_many :patients, through: :visits
   has_one :contract
-  # has_many :visits, through: :patients
+  has_many :clearances
+  has_many :users, through: :clearances
+  has_many :visits
+  has_many :agency_rates
+  has_many :visit_types, through: :agency_rates
+  has_many :rates
+  has_many :clearances
+  has_many :users, through: :clearances
 end

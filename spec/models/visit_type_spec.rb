@@ -16,5 +16,9 @@ RSpec.describe VisitType, type: :model do
 
   describe 'ActiveRecord associations' do
     it { expect(vt).to have_many(:visits) }
+    it { expect(vt).to have_many(:agency_rates) }
+    it { expect(vt).to have_many(:agencies).through(:agency_rates) }
+    it { expect(vt).to have_many(:rates) }
+    it { expect(vt).to have_many(:users).through(:rates) }
   end
 end

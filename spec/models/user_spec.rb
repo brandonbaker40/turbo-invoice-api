@@ -13,5 +13,10 @@ RSpec.describe User, type: :model do
 
   describe 'ActiveRecord associations' do
     it { expect(u).to belong_to(:discipline) }
+    it { expect(u).to have_many(:visits) }
+    it { expect(u).to have_many(:patients).through(:visits) }
+    it { expect(u).to have_many(:rates) }
+    it { expect(u).to have_many(:clearances) }
+    it { expect(u).to have_many(:agencies).through(:clearances) }
   end
 end

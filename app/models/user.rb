@@ -30,4 +30,9 @@ class User < ApplicationRecord
   # rubocop:enable Metrics/LineLength
 
   belongs_to :discipline
+  has_many :visits
+  has_many :patients, through: :visits
+  has_many :rates
+  has_many :clearances
+  has_many :agencies, through: :clearances
 end
