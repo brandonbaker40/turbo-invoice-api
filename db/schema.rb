@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_204430) do
+ActiveRecord::Schema.define(version: 2018_12_29_174101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 2018_12_28_204430) do
     t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "agency_rates", force: :cascade do |t|
+    t.bigint "agency_id"
+    t.bigint "visit_type_id"
+    t.float "amount"
+    t.integer "arrangement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_agency_rates_on_agency_id"
+    t.index ["visit_type_id"], name: "index_agency_rates_on_visit_type_id"
   end
 
   create_table "clearances", force: :cascade do |t|
@@ -137,6 +148,8 @@ ActiveRecord::Schema.define(version: 2018_12_28_204430) do
     t.index ["visit_type_id"], name: "index_visits_on_visit_type_id"
   end
 
+  add_foreign_key "agency_rates", "agencies"
+  add_foreign_key "agency_rates", "visit_types"
   add_foreign_key "clearances", "agencies"
   add_foreign_key "clearances", "users"
   add_foreign_key "contracts", "agencies"
