@@ -38,15 +38,15 @@ valid_klasses.each do |model|
         it { expect(some_model_instance).to validate_numericality_of(:zip_code) }
       end
 
-      if model.has_attribute? :phone_number
-        it { expect(some_model_instance).to allow_value('3015555555').for(:phone_number) }
+      if model.has_attribute? :phone
+        it { expect(some_model_instance).to allow_value('3015555555').for(:phone) }
 
-        it { expect(some_model_instance).to_not allow_value('301-555-5555').for(:phone_number) }
-        it { expect(some_model_instance).to_not allow_value('(301)555-5555').for(:phone_number) }
-        it { expect(some_model_instance).to_not allow_value('301.555.5555').for(:phone_number) }
-        it { expect(some_model_instance).to_not allow_value('301555555').for(:phone_number) }
+        it { expect(some_model_instance).to_not allow_value('301-555-5555').for(:phone) }
+        it { expect(some_model_instance).to_not allow_value('(301)555-5555').for(:phone) }
+        it { expect(some_model_instance).to_not allow_value('301.555.5555').for(:phone) }
+        it { expect(some_model_instance).to_not allow_value('301555555').for(:phone) }
 
-        it { expect(some_model_instance).to validate_numericality_of(:phone_number) }
+        it { expect(some_model_instance).to validate_numericality_of(:phone) }
       end
     end
   end

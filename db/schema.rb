@@ -10,10 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_17_032832) do
+ActiveRecord::Schema.define(version: 2018_12_29_174101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "agencies", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "agency_rates", force: :cascade do |t|
+    t.bigint "agency_id"
+    t.bigint "visit_type_id"
+    t.float "amount"
+    t.integer "arrangement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_agency_rates_on_agency_id"
+    t.index ["visit_type_id"], name: "index_agency_rates_on_visit_type_id"
+  end
+
+  create_table "clearances", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "agency_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_clearances_on_agency_id"
+    t.index ["user_id"], name: "index_clearances_on_user_id"
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.bigint "agency_id"
+    t.date "effective_date"
+    t.date "termination_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_contracts_on_agency_id"
+  end
 
   create_table "disciplines", force: :cascade do |t|
     t.string "name"
@@ -22,6 +63,30 @@ ActiveRecord::Schema.define(version: 2018_12_17_032832) do
     t.string "abbreviation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "sex"
+    t.date "date_of_birth"
+    t.bigint "agency_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_patients_on_agency_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "visit_type_id"
+    t.bigint "agency_id"
+    t.float "amount"
+    t.integer "arrangement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_rates_on_agency_id"
+    t.index ["user_id"], name: "index_rates_on_user_id"
+    t.index ["visit_type_id"], name: "index_rates_on_visit_type_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,10 +113,53 @@ ActiveRecord::Schema.define(version: 2018_12_17_032832) do
     t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "discipline_id"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["discipline_id"], name: "index_users_on_discipline_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  create_table "visit_types", force: :cascade do |t|
+    t.string "name"
+    t.integer "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "agency_id"
+    t.bigint "user_id"
+    t.bigint "visit_type_id"
+    t.datetime "time_in"
+    t.datetime "time_out"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_visits_on_agency_id"
+    t.index ["patient_id"], name: "index_visits_on_patient_id"
+    t.index ["user_id"], name: "index_visits_on_user_id"
+    t.index ["visit_type_id"], name: "index_visits_on_visit_type_id"
+  end
+
+  add_foreign_key "agency_rates", "agencies"
+  add_foreign_key "agency_rates", "visit_types"
+  add_foreign_key "clearances", "agencies"
+  add_foreign_key "clearances", "users"
+  add_foreign_key "contracts", "agencies"
+  add_foreign_key "patients", "agencies"
+  add_foreign_key "rates", "agencies"
+  add_foreign_key "rates", "users"
+  add_foreign_key "rates", "visit_types"
+  add_foreign_key "users", "disciplines"
+  add_foreign_key "visits", "agencies"
+  add_foreign_key "visits", "patients"
+  add_foreign_key "visits", "users"
+  add_foreign_key "visits", "visit_types"
 end

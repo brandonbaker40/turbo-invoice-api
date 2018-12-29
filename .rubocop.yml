@@ -21,3 +21,7 @@ Metrics/LineLength:
 Lint/UselessAssignment:
   Exclude:
     - 'spec/**/*'
+
+Style/NumericLiterals:
+  Exclude:
+    - 'spec/factories/*'
