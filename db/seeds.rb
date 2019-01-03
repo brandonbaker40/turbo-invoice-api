@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'csv'
-require 'faker'
 
 models = [VisitType, Discipline, Agency, Contract, User, Clearance, Patient, AgencyRate, Rate, Visit]
 models.each do |m|
