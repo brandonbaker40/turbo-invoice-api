@@ -15,13 +15,14 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   # rubocop:disable Metrics/LineLength
-  %i[name nickname email password discipline_id street_address city state zip_code].each do |attr|
+  %i[name email password discipline_id street_address city state zip_code].each do |attr|
     validates_presence_of attr.to_sym
   end
   # rubocop:enable Metrics/LineLength
 
   validates :zip_code, numericality: true
   validates :state, length: { is: 2 }
+  validates :nickname, presence: true, allow_nil: true
 
   validates_format_of :zip_code, with: /\A\d{5}\z/
 

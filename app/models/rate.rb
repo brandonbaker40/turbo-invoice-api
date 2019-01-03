@@ -2,7 +2,7 @@
 
 # Rate
 class Rate < ApplicationRecord
-  %i[user_id visit_type_id agency_id amount arrangement].each do |attr|
+  %i[user_id visit_type_id amount arrangement].each do |attr|
     validates_presence_of attr.to_sym
   end
 
@@ -12,5 +12,5 @@ class Rate < ApplicationRecord
 
   belongs_to :user
   belongs_to :visit_type
-  belongs_to :agency
+  belongs_to :agency, optional: true
 end

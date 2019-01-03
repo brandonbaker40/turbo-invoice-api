@@ -7,7 +7,7 @@ RSpec.describe Rate, type: :model do
 
   describe 'ActiveModel validations' do
     # basic validations
-    %i[user_id visit_type_id agency_id amount arrangement].each do |attr|
+    %i[user_id visit_type_id amount arrangement].each do |attr|
       it { expect(r).to validate_presence_of(attr) }
     end
 
@@ -18,6 +18,6 @@ RSpec.describe Rate, type: :model do
   describe 'ActiveRecord associations' do
     it { expect(r).to belong_to(:user) }
     it { expect(r).to belong_to(:visit_type) }
-    it { expect(r).to belong_to(:agency) }
+    it { expect(r).to belong_to(:agency).optional }
   end
 end

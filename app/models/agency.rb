@@ -32,6 +32,4 @@ class Agency < ApplicationRecord
   has_many :agency_rates
   has_many :visit_types, through: :agency_rates
   has_many :rates
-  has_many :clearances
-  has_many :users, through: :clearances
 end
