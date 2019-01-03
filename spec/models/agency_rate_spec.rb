@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe AgencyRate, type: :model do
-  let(:ar) { build(:rate) }
+  let(:ar) { build(:agency_rate) }
 
   describe 'ActiveModel validations' do
     # basic validations
-    %i[user_id visit_type_id agency_id amount arrangement].each do |attr|
+    %i[visit_type_id agency_id amount arrangement].each do |attr|
       it { expect(ar).to validate_presence_of(attr) }
     end
 
