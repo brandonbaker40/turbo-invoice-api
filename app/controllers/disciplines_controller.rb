@@ -3,6 +3,7 @@
 # DisciplinesController
 class DisciplinesController < ApplicationController
   before_action :set_discipline, only: %i[show update destroy]
+  before_action :authenticate_user
 
   # GET /disciplines
   def index

@@ -24,7 +24,6 @@ gem 'puma', '~> 3.11'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'devise_token_auth'
 gem 'omniauth'
 
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -32,6 +31,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'rack-rewrite'
 
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'knock'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
