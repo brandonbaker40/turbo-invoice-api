@@ -46,6 +46,7 @@ group :development do
   gem 'rubocop', '~> 0.61.1', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'database_cleaner'
 end
 
 group :test do

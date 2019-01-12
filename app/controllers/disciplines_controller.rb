@@ -3,7 +3,7 @@
 # DisciplinesController
 class DisciplinesController < ApplicationController
   before_action :set_discipline, only: %i[show update destroy]
-  before_action :authenticate_user
+  #before_action :authenticate_user
 
   # GET /disciplines
   def index
@@ -51,6 +51,6 @@ class DisciplinesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def discipline_params
-    params.fetch(:discipline, {})
+    params.require(:discipline).permit(:name, :field, :job_title, :abbreviation)
   end
 end
