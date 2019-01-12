@@ -50,6 +50,6 @@ class ClearancesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def clearance_params
-    params.fetch(:clearance, {})
+    params.require(:clearance).permit(:agency_id, :user_id)
   end
 end

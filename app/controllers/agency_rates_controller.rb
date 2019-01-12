@@ -50,6 +50,6 @@ class AgencyRatesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def agency_rate_params
-    params.fetch(:agency_rate, {})
+    params.require(:agency_rate).permit(:agency_id, :visit_type_id, :amount, :arrangement)
   end
 end

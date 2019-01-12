@@ -50,6 +50,6 @@ class ContractsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def contract_params
-    params.fetch(:contract, {})
+    params.require(:contract).permit(:agency_id, :effective_date, :termination_date)
   end
 end

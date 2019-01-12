@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :create]
     resources :disciplines, :agencies, :visit_types, :visits
 
+    # If available, these routes should only be available to admins
+    resources :clearances, :contracts, :agency_rates, :patients, :rates, :users
+
     resources :agencies do
       resources :patients, only: [:index, :new, :create, :show]
       resources :rates
