@@ -7,7 +7,7 @@ RSpec.describe VisitsController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) { build(:visit).attributes }
 
-  let(:invalid_attributes) { build(:visit, patient_id: nil).attributes }
+  let(:invalid_attributes) { build(:visit, user_id: nil).attributes }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -56,14 +56,14 @@ RSpec.describe VisitsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        valid_attributes.merge(patient_id: "Some Other Name")
+        valid_attributes.merge("user_id" => 1)
       }
 
       it "updates the requested visit" do
         visit = Visit.create! valid_attributes
         put :update, params: {id: visit.to_param, visit: new_attributes}, session: valid_session
         visit.reload
-        expect(assigns(:visit).patient_id).to eq("Some Other Name")
+        expect(assigns(:visit).user_id).to eq(1)
       end
 
       it "redirects to the visit" do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_181929) do
+ActiveRecord::Schema.define(version: 2019_01_12_195725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,9 @@ ActiveRecord::Schema.define(version: 2019_01_04_181929) do
     t.bigint "agency_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["agency_id"], name: "index_clearances_on_agency_id"
+    t.index ["user_id"], name: "index_clearances_on_user_id"
   end
 
   create_table "contracts", force: :cascade do |t|
@@ -81,7 +83,9 @@ ActiveRecord::Schema.define(version: 2019_01_04_181929) do
     t.integer "arrangement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["agency_id"], name: "index_rates_on_agency_id"
+    t.index ["user_id"], name: "index_rates_on_user_id"
     t.index ["visit_type_id"], name: "index_rates_on_visit_type_id"
   end
 
@@ -116,20 +120,25 @@ ActiveRecord::Schema.define(version: 2019_01_04_181929) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["agency_id"], name: "index_visits_on_agency_id"
     t.index ["patient_id"], name: "index_visits_on_patient_id"
+    t.index ["user_id"], name: "index_visits_on_user_id"
     t.index ["visit_type_id"], name: "index_visits_on_visit_type_id"
   end
 
   add_foreign_key "agency_rates", "agencies"
   add_foreign_key "agency_rates", "visit_types"
   add_foreign_key "clearances", "agencies"
+  add_foreign_key "clearances", "users"
   add_foreign_key "contracts", "agencies"
   add_foreign_key "patients", "agencies"
   add_foreign_key "rates", "agencies"
+  add_foreign_key "rates", "users"
   add_foreign_key "rates", "visit_types"
   add_foreign_key "users", "disciplines"
   add_foreign_key "visits", "agencies"
   add_foreign_key "visits", "patients"
+  add_foreign_key "visits", "users"
   add_foreign_key "visits", "visit_types"
 end

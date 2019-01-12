@@ -56,7 +56,7 @@ RSpec.describe UsersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        valid_attributes.merge(email: "quigon-jin@example.com")
+        valid_attributes.merge("email" => "quigon-jin@example.com")
       }
 
       it "updates the requested user" do

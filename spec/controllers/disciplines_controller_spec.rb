@@ -56,7 +56,7 @@ RSpec.describe DisciplinesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        valid_attributes.merge(name: "Wizardry")
+        valid_attributes.merge("name" => "Wizardry")
       }
 
       it "updates the requested discipline" do

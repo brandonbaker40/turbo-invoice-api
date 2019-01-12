@@ -55,8 +55,9 @@ RSpec.describe AgenciesController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
+
       let(:new_attributes) {
-        valid_attributes.merge(name: "Gringots Home Health")
+        valid_attributes.merge("name" => "Gringots Home Health")
       }
 
       it "updates the requested agency" do

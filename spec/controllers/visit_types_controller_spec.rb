@@ -56,7 +56,7 @@ RSpec.describe VisitTypesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        valid_attributes.merge(name: "Magic Healing")
+        valid_attributes.merge("name" => "Magic Healing")
       }
 
       it "updates the requested visit_type" do
