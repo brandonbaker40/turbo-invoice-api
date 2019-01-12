@@ -10,7 +10,7 @@ class User < ApplicationRecord
   end
 
   # rubocop:disable Metrics/LineLength
-  %i[name email password discipline_id street_address city state zip_code].each do |attr|
+  %i[email discipline_id street_address city state zip_code auth0_id_string].each do |attr|
     validates_presence_of attr.to_sym
   end
   # rubocop:enable Metrics/LineLength

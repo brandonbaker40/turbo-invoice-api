@@ -56,14 +56,14 @@ RSpec.describe VisitTypesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        valid_attributes.merge(name: "Some Other Name")
+        valid_attributes.merge(name: "Magic Healing")
       }
 
       it "updates the requested visit_type" do
         visit_type = VisitType.create! valid_attributes
         put :update, params: {id: visit_type.to_param, visit_type: new_attributes}, session: valid_session
         visit_type.reload
-        expect(assigns(:visit_type).name).to eq("Some Other Name")
+        expect(assigns(:visit_type).name).to eq("Magic Healing")
       end
 
       it "redirects to the visit_type" do

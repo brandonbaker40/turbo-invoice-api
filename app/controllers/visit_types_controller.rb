@@ -51,6 +51,5 @@ class VisitTypesController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def visit_type_params
     params.require(:visit_type).permit(:name, :code)
-
   end
 end

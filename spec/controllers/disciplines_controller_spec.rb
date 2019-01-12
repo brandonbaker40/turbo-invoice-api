@@ -56,14 +56,14 @@ RSpec.describe DisciplinesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        valid_attributes.merge(name: "Some Other Name")
+        valid_attributes.merge(name: "Wizardry")
       }
 
       it "updates the requested discipline" do
         discipline = Discipline.create! valid_attributes
         put :update, params: {id: discipline.to_param, discipline: new_attributes}, session: valid_session
         discipline.reload
-        expect(assigns(:discipline).name).to eq("Some Other Name")
+        expect(assigns(:discipline).name).to eq("Wizardry")
       end
 
       it "redirects to the discipline" do

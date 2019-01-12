@@ -56,14 +56,14 @@ RSpec.describe AgenciesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        valid_attributes.merge(name: "Some Other Name")
+        valid_attributes.merge(name: "Gringots Home Health")
       }
 
       it "updates the requested agency" do
         agency = Agency.create! valid_attributes
         put :update, params: {id: agency.to_param, agency: new_attributes}, session: valid_session
         agency.reload
-        expect(assigns(:agency).name).to eq("Some Other Name")
+        expect(assigns(:agency).name).to eq("Gringots Home Health")
       end
 
       it "redirects to the agency" do
