@@ -50,6 +50,8 @@ class AgenciesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def agency_params
+    # rubocop:disable Metrics/LineLength
     params.require(:agency).permit(:name, :phone, :street_address, :city, :state, :zip_code, :approved)
+    # rubocop:enable Metrics/LineLength
   end
 end

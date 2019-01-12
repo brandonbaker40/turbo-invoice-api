@@ -49,9 +49,9 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers', '4.0.0.rc1'
-  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
