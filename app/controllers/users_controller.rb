@@ -50,6 +50,8 @@ class UsersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def user_params
-    params.fetch(:user, {})
+    # rubocop:disable Metrics/LineLength
+    params.require(:user).permit(:discipline_id, :street_address, :city, :state, :zip_code, :email, :auth0_id_string)
+    # rubocop:enable Metrics/LineLength
   end
 end

@@ -50,6 +50,8 @@ class PatientsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def patient_params
-    params.fetch(:patient, {})
+    # rubocop:disable Metrics/LineLength
+    params.require(:patient).permit(:first_name, :last_name, :sex, :date_of_birth, :agency_id)
+    # rubocop:enable Metrics/LineLength
   end
 end

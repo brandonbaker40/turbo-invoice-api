@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'
 
-  scope '/api/v1' do 
+  scope '/api/v1' do
     resources :users, except: [:new, :create]
     resources :disciplines, :agencies, :visit_types, :visits
+
+    # If available, these routes should only be available to admins
+    resources :clearances, :contracts, :agency_rates, :patients, :rates, :users
 
     resources :agencies do
       resources :patients, only: [:index, :new, :create, :show]

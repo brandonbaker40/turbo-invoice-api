@@ -6,6 +6,7 @@ RSpec.describe Clearance, type: :model do
   let(:c) { build(:clearance) }
 
   describe 'ActiveModel validations' do
+    # basic validations
     %i[user_id agency_id].each do |attr|
       it { expect(c).to validate_presence_of(attr) }
     end

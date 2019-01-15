@@ -6,6 +6,7 @@ RSpec.describe Discipline, type: :model do
   let(:d) { build(:discipline) }
 
   describe 'ActiveModel validations' do
+    # basic validations
     %i[name field job_title abbreviation].each do |attr|
       it { expect(d).to validate_presence_of(attr) }
     end

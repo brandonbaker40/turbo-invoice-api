@@ -6,11 +6,10 @@ RSpec.describe User, type: :model do
   let(:u) { build(:user) }
 
   describe 'ActiveModel validations' do
-    %i[name email password discipline_id street_address city state zip_code].each do |attr|
+    # basic validations
+    %i[email discipline_id street_address city state zip_code auth0_id_string].each do |attr|
       it { expect(u).to validate_presence_of(attr) }
     end
-
-    it { expect(u).to allow_value(nil).for(:nickname) }
   end
 
   describe 'ActiveRecord associations' do

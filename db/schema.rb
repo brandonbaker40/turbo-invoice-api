@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_29_174101) do
+ActiveRecord::Schema.define(version: 2019_01_12_195725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 2018_12_29_174101) do
   end
 
   create_table "clearances", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "agency_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["agency_id"], name: "index_clearances_on_agency_id"
     t.index ["user_id"], name: "index_clearances_on_user_id"
   end
@@ -77,40 +77,19 @@ ActiveRecord::Schema.define(version: 2018_12_29_174101) do
   end
 
   create_table "rates", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "visit_type_id"
     t.bigint "agency_id"
     t.float "amount"
     t.integer "arrangement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["agency_id"], name: "index_rates_on_agency_id"
     t.index ["user_id"], name: "index_rates_on_user_id"
     t.index ["visit_type_id"], name: "index_rates_on_visit_type_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "provider", default: "email", null: false
-    t.string "uid", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.boolean "allow_password_change", default: false
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.string "name"
-    t.string "nickname"
-    t.string "image"
-    t.string "email"
-    t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "discipline_id"
@@ -118,11 +97,11 @@ ActiveRecord::Schema.define(version: 2018_12_29_174101) do
     t.string "city"
     t.string "state"
     t.string "zip_code"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.string "email"
+    t.string "auth0_id_string"
+    t.index ["auth0_id_string"], name: "index_users_on_auth0_id_string", unique: true
     t.index ["discipline_id"], name: "index_users_on_discipline_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
   create_table "visit_types", force: :cascade do |t|
@@ -135,13 +114,13 @@ ActiveRecord::Schema.define(version: 2018_12_29_174101) do
   create_table "visits", force: :cascade do |t|
     t.bigint "patient_id"
     t.bigint "agency_id"
-    t.bigint "user_id"
     t.bigint "visit_type_id"
     t.datetime "time_in"
     t.datetime "time_out"
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["agency_id"], name: "index_visits_on_agency_id"
     t.index ["patient_id"], name: "index_visits_on_patient_id"
     t.index ["user_id"], name: "index_visits_on_user_id"
