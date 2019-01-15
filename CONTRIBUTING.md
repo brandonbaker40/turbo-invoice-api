@@ -1,4 +1,4 @@
-Thanks for contributing to Turbo Invoice Backend!
+Thanks for contributing to the Turbo Invoice API project!
 
 When you create a pull request, please include the following:
 
@@ -9,6 +9,8 @@ All pull requests should pass continuous integration and style checks before bei
 
  - `rake spec` to run all Ruby tests
  - `rake spec:models` to run Ruby model tests
+ - `rake spec:controllers` to run Ruby controller tests
+ - `rubocop` to run the code analyzer/formatter
  - `rspec ./spec/path/to/my_spec.rb` to run all Ruby tests in the file `my_spec.rb`
 
 If you would like to discuss an idea before submitting a pull request,

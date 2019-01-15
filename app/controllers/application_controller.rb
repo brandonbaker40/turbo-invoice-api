@@ -2,5 +2,4 @@
 
 # ApplicationController
 class ApplicationController < ActionController::API
-
 end
