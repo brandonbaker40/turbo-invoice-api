@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/brandonbaker40/turbo_invoice_backend.svg?branch=master)](https://travis-ci.org/brandonbaker40/turbo_invoice_backend) [![Code Climate](https://api.codeclimate.com/v1/badges/99dc64e18f197549a093/maintainability)](https://codeclimate.com/github/brandonbaker40/turbo_invoice_backend/maintainability)
 
-Turbo Invoice Backend is an open source project to provide an invoicing tool for home health staffing agencies. Home health clinicians make visits in patients' homes, then use this tool to submit information regarding those visits so they can get paid by the staffing agency.
+Turbo Invoice API is an open source project to provide an invoicing tool for home health staffing agencies. Home health clinicians make visits in patients' homes, then use this tool to submit information regarding those visits so they can get paid by the staffing agency.
 
 This project is a Rails API, so you won't find views in this project. A compatible Angular frontend is in development and will be posted in this README.    
 
