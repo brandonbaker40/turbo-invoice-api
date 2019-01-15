@@ -45,11 +45,11 @@ Log out of Postgres
 
 Clone the repo
 
-	git clone git@github.com:brandonbaker40/turbo_invoice_backend.git
+	git clone git@github.com:brandonbaker40/turbo-invoice-api.git
 
 Enter the directory. `cd` into the directory:
 
-	cd turbo_invoice_backend
+	cd turbo-invoice-api
 
 ### Linux or Mac
 
@@ -79,9 +79,7 @@ Initialize the app
 
 ### Browser
 
-Open http://localhost:3000
-
-You should see "Yay! You're on Rails!" with the Rails and Ruby versions for development.
+Open http://localhost:3000/api/v1/disciplines to test the application is working. If you see an empty array, the database has not been seeded properly. Otherwise, you should see the entire list of disciplines.
 
 ## API Endpoints
 

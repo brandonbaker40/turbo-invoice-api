@@ -14,4 +14,4 @@ All pull requests should pass continuous integration and style checks before bei
  - `rspec ./spec/path/to/my_spec.rb` to run all Ruby tests in the file `my_spec.rb`
 
 If you would like to discuss an idea before submitting a pull request,
-please open a [GitHub Issue](https://github.com/brandonbaker40/turbo_invoice_backend/issues).
+please open a [GitHub Issue](https://github.com/brandonbaker40/turbo-invoice-api/issues).
