@@ -2,12 +2,14 @@
 
 # VisitsController
 class VisitsController < ApplicationController
+  require 'uri'
+
   before_action :set_visit, only: %i[show update destroy]
 
   # GET /visits
   def index
-    @visits = Visit.all
-
+    # @visits = Visit.all
+    @visits = filter_first(Visit)
     render json: @visits
   end
 
