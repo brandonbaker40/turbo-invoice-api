@@ -2,27 +2,21 @@
 
 # User
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
-         :registerable,
-         :recoverable,
-         :rememberable,
-         :trackable,
-         :validatable,
-         :omniauthable
-
-  include DeviseTokenAuth::Concerns::User
+  def self.from_token_payload(payload)
+    find_or_create_by(
+      email: payload['email'],
+      auth0_id_string: payload['sub']
+    )
+  end
 
   # rubocop:disable Metrics/LineLength
-  %i[name email password discipline_id street_address city state zip_code].each do |attr|
+  %i[email discipline_id street_address city state zip_code auth0_id_string].each do |attr|
     validates_presence_of attr.to_sym
   end
   # rubocop:enable Metrics/LineLength
 
   validates :zip_code, numericality: true
   validates :state, length: { is: 2 }
-  validates :nickname, presence: true, allow_nil: true
 
   validates_format_of :zip_code, with: /\A\d{5}\z/
 

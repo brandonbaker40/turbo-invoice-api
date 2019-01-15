@@ -24,7 +24,6 @@ gem 'puma', '~> 3.11'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'devise_token_auth'
 gem 'omniauth'
 
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -49,6 +48,7 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers', '4.0.0.rc1'
 end

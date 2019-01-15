@@ -6,6 +6,7 @@ RSpec.describe Contract, type: :model do
   let(:c) { build(:contract) }
 
   describe 'ActiveModel validations' do
+    # basic validations
     %i[agency_id effective_date].each do |attr|
       it { expect(c).to validate_presence_of(attr) }
     end

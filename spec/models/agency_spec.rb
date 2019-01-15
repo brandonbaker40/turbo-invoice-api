@@ -6,6 +6,7 @@ RSpec.describe Agency, type: :model do
   let(:a) { build(:agency) }
 
   describe 'ActiveModel validations' do
+    # basic validations
     %i[name phone street_address city state zip_code].each do |attr|
       it { expect(a).to validate_presence_of(attr) }
     end

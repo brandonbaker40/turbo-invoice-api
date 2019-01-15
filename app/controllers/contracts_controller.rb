@@ -50,6 +50,8 @@ class ContractsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def contract_params
-    params.fetch(:contract, {})
+    # rubocop:disable Metrics/LineLength
+    params.require(:contract).permit(:agency_id, :effective_date, :termination_date)
+    # rubocop:enable Metrics/LineLength
   end
 end
