@@ -79,9 +79,11 @@ Initialize the app
 
 ### Testing
 
-  rspec
-  rspec spec/models
-  rspec spec/controllers
+    rspec
+
+    rspec spec/models
+
+    rspec spec/controllers
 
 ### Browser
 
