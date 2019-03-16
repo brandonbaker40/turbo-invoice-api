@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
 
   describe 'ActiveModel validations' do
     # basic validations
-    %i[email discipline_id street_address city state zip_code auth0_id_string].each do |attr|
+    %i[email discipline_id street_address city state zip_code].each do |attr|
       it { expect(u).to validate_presence_of(attr) }
     end
   end

@@ -2,15 +2,9 @@
 
 # User
 class User < ApplicationRecord
-  def self.from_token_payload(payload)
-    find_or_create_by(
-      email: payload['email'],
-      auth0_id_string: payload['sub']
-    )
-  end
 
   # rubocop:disable Metrics/LineLength
-  %i[email discipline_id street_address city state zip_code auth0_id_string].each do |attr|
+  %i[email discipline_id street_address city state zip_code].each do |attr|
     validates_presence_of attr.to_sym
   end
   # rubocop:enable Metrics/LineLength

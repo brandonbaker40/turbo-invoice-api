@@ -8,6 +8,5 @@ FactoryBot.define do
     city { Faker::Address.community }
     state { Faker::Address.state_abbr }
     zip_code { rand.to_s[2..6] }
-    auth0_id_string { Faker::Internet.password(20) }
   end
 end
