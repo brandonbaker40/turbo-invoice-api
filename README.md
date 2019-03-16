@@ -77,6 +77,12 @@ Initialize the app
 	rails s
     bundle exec rails server
 
+### Testing
+
+  rspec
+  rspec spec/models
+  rspec spec/controllers
+
 ### Browser
 
 Open http://localhost:3000/api/v1/disciplines to test the application is working. If you see an empty array, the database has not been seeded properly. Otherwise, you should see the entire list of disciplines.
