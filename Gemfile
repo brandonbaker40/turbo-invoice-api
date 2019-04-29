@@ -25,6 +25,7 @@ gem 'puma', '~> 3.11'
 # gem 'capistrano-rails', group: :development
 
 gem 'omniauth'
+gem 'rb-readline'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors', require: 'rack/cors'
